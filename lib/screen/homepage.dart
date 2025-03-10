@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/Provider/theme_provider.dart';
+import 'package:todo_app/widgets/create_input.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -34,18 +35,36 @@ class _HomepageState extends State<Homepage> {
                   ),
                 ),
               ),
-              Positioned(
-                top: 60,
-                right: 50,
-                child: IconButton(
-                  onPressed: () {
-                    provider.setTheme();
-                  },
-                  icon: Icon(
-                    isDarkMode ? Icons.light_mode : Icons.dark_mode,
-                    color: Colors.white,
-                  ),
+              Padding(
+                padding: const EdgeInsets.only(top: 50.0, right: 16, left: 16),
+                child: Row(
+                  children: [
+                    const Text(
+                      'TODO',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 8,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const Spacer(),
+                    IconButton(
+                      onPressed: () {
+                        provider.setTheme();
+                      },
+                      icon: Icon(
+                        isDarkMode ? Icons.light_mode : Icons.dark_mode,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
                 ),
+              ),
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.only(top: 140.0, right: 16, left: 16),
+                child: CreateInput(suffixIcon: Icon(Icons.circle, size: 18,)),
               ),
             ],
           ),
